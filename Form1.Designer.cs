@@ -134,7 +134,6 @@ namespace tic_tac_toe
             // 
             // label
             // 
-            this.label.AutoSize = true;
             this.label.Font = new System.Drawing.Font("Courier New", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label.Location = new System.Drawing.Point(33, 408);
             this.label.Name = "label";
@@ -173,9 +172,8 @@ namespace tic_tac_toe
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Tic Tac Toe";
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

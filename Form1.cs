@@ -17,6 +17,10 @@ namespace tic_tac_toe
             InitializeComponent();
         }
 
+        public string currentPlayer = "O";
+        public int clicks = 0;
+        public bool isWinnerOrTie = false;
+
         private void checkWinner(string currentPlayer, int clicks)
         {
             if ((button1.Text == button2.Text && button2.Text == button3.Text && button3.Text != "") ||
@@ -25,10 +29,11 @@ namespace tic_tac_toe
                 (button1.Text == button4.Text && button4.Text == button7.Text && button7.Text != "") ||
                 (button2.Text == button5.Text && button5.Text == button8.Text && button8.Text != "") ||
                 (button3.Text == button6.Text && button6.Text == button9.Text && button9.Text != "") ||
-                (button1.Text == button5.Text && button5.Text == button3.Text && button3.Text != "") ||
+                (button1.Text == button5.Text && button5.Text == button9.Text && button9.Text != "") ||
                 (button3.Text == button5.Text && button5.Text == button7.Text && button7.Text != ""))
             {
                 label.Text = currentPlayer + " WINS!";
+                isWinnerOrTie = true;
 
                 // disable all remaining buttons
                 foreach (Control btn in this.Controls)
@@ -56,12 +61,10 @@ namespace tic_tac_toe
             }
             else if (clicks == 9)
             {
+                isWinnerOrTie = true;
                 label.Text = "It's a tie!";
             }
         }
-
-        public string currentPlayer = "O";
-        public int clicks = 0;
 
         private void button_Click(object sender, EventArgs e)
         {
@@ -69,20 +72,20 @@ namespace tic_tac_toe
             (sender as Button).Enabled = false;
             clicks++;
             checkWinner(currentPlayer, clicks);
-            
-            if (currentPlayer == "O")
+            if (!isWinnerOrTie)
             {
-                currentPlayer = "X";
-                label.Text = "Next turn: " + currentPlayer;
-            }
-            else
-            {
-                currentPlayer = "O";
-                label.Text = "Next turn: " + currentPlayer;
+                if (currentPlayer == "O")
+                {
+                    currentPlayer = "X";
+                    label.Text = "Next turn: " + currentPlayer;
+                }
+                else
+                {
+                    currentPlayer = "O";
+                    label.Text = "Next turn: " + currentPlayer;
+                }
             }
         }
-
-        // TO DO: FIX WRONG LABEL TEXT AFTER WIN
 
         private void restart_btn_Click(object sender, EventArgs e)
         {
@@ -104,8 +107,7 @@ namespace tic_tac_toe
             currentPlayer = "O";
             label.Text = "Next turn: " + currentPlayer;
             clicks = 0;
+            isWinnerOrTie = false;
         }
     }
 }
-
-// TO DO: CHANGE LAYOUT OF DISABLED BUTTONS
