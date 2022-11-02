@@ -1,3 +1,5 @@
 # Tic Tac Toe
 
-tic tac toe game in C# with WinForms GUI
+Standard Tic Tac Toe game written in C# with use of Windows Forms .NET framework.
+
+![Tic Tac Toe GUI](gui.png)
